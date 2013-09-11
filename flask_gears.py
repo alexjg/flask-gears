@@ -19,7 +19,8 @@ class Gears(object):
 
     def __init__(self, app=None, defaults=True, assets_folder='assets',
                  compilers=None, compressors=None, public_assets=None,
-                 extra_public_assets=None, cache=None, gzip=False):
+                 extra_public_assets=None, cache=None, gzip=False,
+                 fingerprinting=True):
         self.defaults = defaults
         self.assets_folder = assets_folder
         self.compilers = compilers
@@ -30,6 +31,7 @@ class Gears(object):
         self.gzip = gzip
         if app is not None:
             self.init_app(app)
+        self.fingerprinting = fingerprinting
 
     def init_app(self, app):
         app.extensions['gears'] = {}
@@ -49,6 +51,7 @@ class Gears(object):
             public_assets=self.get_public_assets(app),
             cache=self.get_cache(app),
             gzip=self.gzip,
+            fingerpringing=self.fingerprinting,
         )
         if self.defaults:
             environment.register_defaults()
