@@ -51,7 +51,7 @@ class Gears(object):
             public_assets=self.get_public_assets(app),
             cache=self.get_cache(app),
             gzip=self.gzip,
-            fingerpringing=self.fingerprinting,
+            fingerprinting=self.fingerprinting,
         )
         if self.defaults:
             environment.register_defaults()
